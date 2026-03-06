@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BattleResource" format=3 uid="uid://bie2tjmwsv1pw"]
+
+[ext_resource type="Script" uid="uid://byi041sxtpxf5" path="res://src/scripts/resource_scripts/base_fight.gd" id="1_0d0x0"]
+
+[resource]
+script = ExtResource("1_0d0x0")
+metadata/_custom_type_script = "uid://byi041sxtpxf5"

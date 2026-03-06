@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://c4sbrbn26swvo"]
 
-[ext_resource type="Script" uid="uid://cu4idhpkrorhk" path="res://src/scripts/main.gd" id="1_32aa5"]
 [ext_resource type="PackedScene" uid="uid://0jii5j02eena" path="res://src/scenes/player_character.tscn" id="1_kkvs4"]
+[ext_resource type="PackedScene" uid="uid://dk7h0onfuy3p1" path="res://src/scenes/enemies/sea_horse_rider.tscn" id="2_rr2wm"]
+[ext_resource type="Resource" uid="uid://drsdtpeh0xrf5" path="res://src/dialogues/shitass.dialogue" id="3_32aa5"]
 
 [node name="Main" type="Node2D" unique_id=203482492]
-script = ExtResource("1_32aa5")
+y_sort_enabled = true
 
 [node name="PlayerCharacter" parent="." unique_id=1356791457 instance=ExtResource("1_kkvs4")]
 position = Vector2(-1, 0)
 
 [node name="PlayerCamera" type="Camera2D" parent="PlayerCharacter" unique_id=1428302039]
 position_smoothing_enabled = true
+
+[node name="SeaHorseRider" parent="." unique_id=777290446 instance=ExtResource("2_rr2wm")]
+position = Vector2(221, 65)
+connected_dialogue = ExtResource("3_32aa5")

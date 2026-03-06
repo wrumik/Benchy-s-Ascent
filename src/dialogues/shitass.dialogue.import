@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://drsdtpeh0xrf5"
+path="res://.godot/imported/shitass.dialogue-2edd23694c06eb12362da468ef31657e.tres"
+
+[deps]
+
+source_file="res://src/dialogues/shitass.dialogue"
+dest_files=["res://.godot/imported/shitass.dialogue-2edd23694c06eb12362da468ef31657e.tres"]
+
+[params]
+
+defaults=true

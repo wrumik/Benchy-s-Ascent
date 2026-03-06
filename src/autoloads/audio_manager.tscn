@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://ba7o60ir66r66"]
 
+[ext_resource type="Script" uid="uid://m148ejpnljnd" path="res://src/autoloads/audio_manager.gd" id="1_a8xdd"]
+[ext_resource type="AudioStream" uid="uid://d3p5ayjp3513g" path="res://src/sounds/jump.wav" id="2_sycyr"]
+
 [node name="AudioManager" type="Node2D" unique_id=987632632]
+script = ExtResource("1_a8xdd")
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=2009746137]
+stream = ExtResource("2_sycyr")

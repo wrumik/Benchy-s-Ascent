@@ -1,0 +1,13 @@
+[
+	{
+		"position_x": 4,
+		"position_y": 1,
+		"enemy_name": "scaliop"
+	},
+	{
+		"position_x": 5,
+		"position_y": 1,
+		"enemy_name": "scaliop",
+		"chance_to_spawn": 100
+	}
+]

@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://dk7h0onfuy3p1"]
 
-[ext_resource type="Script" uid="uid://c2jsdcijvng3v" path="res://src/scripts/enemies/sea_horse_rider.gd" id="1_vxgvl"]
+[ext_resource type="Script" uid="uid://bep8eau20bnm1" path="res://src/scripts/enemies/scaliop.gd" id="1_d3x4f"]
 [ext_resource type="Texture2D" uid="uid://h1ehn12ocdwt" path="res://src/sprites/enemies/seahorse_rider.png" id="2_vxgvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t3wo"]
-size = Vector2(26, 7)
+size = Vector2(23, 4.5)
 
-[node name="SeaHorseRider" type="StaticBody2D" unique_id=777290446 groups=["Interactible"]]
+[node name="Scaliop" type="Area2D" unique_id=167073379]
 y_sort_enabled = true
-script = ExtResource("1_vxgvl")
+scale = Vector2(2, 2)
+script = ExtResource("1_d3x4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534977111]
-position = Vector2(0, 15.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_0t3wo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=784470834]
 y_sort_enabled = true
-position = Vector2(0, 19)
 texture = ExtResource("2_vxgvl")
 offset = Vector2(0, -19)
+flip_h = true

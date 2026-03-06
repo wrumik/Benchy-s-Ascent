@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://5udapmty207u" path="res://src/sprites/menus/system_button_selected.png" id="7_dl1pw"]
 [ext_resource type="Texture2D" uid="uid://c2snjth5eb4ct" path="res://src/sprites/battle_background.png" id="8_prvex"]
 [ext_resource type="Script" uid="uid://cw4ohlk2yjsep" path="res://src/scripts/combat_grid.gd" id="9_o6xtj"]
-[ext_resource type="Texture2D" uid="uid://h1ehn12ocdwt" path="res://src/sprites/enemies/seahorse_rider.png" id="10_jbgvi"]
 [ext_resource type="Texture2D" uid="uid://ct3t37fg3viuc" path="res://src/sprites/benchy_combat_sheet.png" id="10_vxuoa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbgvi"]
@@ -180,6 +179,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxuoa"]
+size = Vector2(19, 35)
+
 [sub_resource type="Animation" id="Animation_vxuoa"]
 length = 0.001
 tracks/0/type = "value"
@@ -209,7 +211,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerSprite:position")
+tracks/2/path = NodePath("Player/PlayerSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -233,7 +235,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerSprite:animation")
+tracks/4/path = NodePath("Player/PlayerSprite:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -273,14 +275,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerSprite:position")
+tracks/2/path = NodePath("Player/PlayerSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.7, 1.2),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(166, -160), Vector2(166, 352)]
+"values": [Vector2(0, -240), Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -297,7 +299,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerSprite:animation")
+tracks/4/path = NodePath("Player/PlayerSprite:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -368,21 +370,21 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(472, 352)
 
-[node name="SeahorseRider" type="Sprite2D" parent="CanvasLayer/CombatScene/CombatGrid/Enemies" unique_id=1029620769]
-scale = Vector2(2, 2)
-texture = ExtResource("10_jbgvi")
-offset = Vector2(0, -20)
-flip_h = true
-
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="CanvasLayer/CombatScene/CombatGrid" unique_id=1769650675]
-z_index = 1
+[node name="Player" type="Area2D" parent="CanvasLayer/CombatScene/CombatGrid" unique_id=1533647588]
 position = Vector2(166, 352)
 scale = Vector2(2, 2)
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="CanvasLayer/CombatScene/CombatGrid/Player" unique_id=1769650675]
+z_index = 1
+position = Vector2(166, 352)
 sprite_frames = SubResource("SpriteFrames_d44ib")
 animation = &"fall"
 autoplay = "fall"
-frame_progress = 0.61674976
 offset = Vector2(0, -21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/CombatScene/CombatGrid/Player" unique_id=675019824]
+position = Vector2(-0.5, -18.5)
+shape = SubResource("RectangleShape2D_vxuoa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CombatScene/CombatGrid" unique_id=956869980]
 libraries/ = SubResource("AnimationLibrary_vxuoa")

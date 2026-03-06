@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 folder_colors={
 "res://src/autoloads/": "blue",
+"res://src/battles/": "blue",
 "res://src/dialogue_balloons/": "gray",
 "res://src/dialogues/": "teal",
 "res://src/fonts/": "gray",

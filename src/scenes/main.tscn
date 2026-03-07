@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://c4sbrbn26swvo"]
 
 [ext_resource type="PackedScene" uid="uid://0jii5j02eena" path="res://src/scenes/player_character.tscn" id="1_kkvs4"]
-[ext_resource type="PackedScene" uid="uid://dk7h0onfuy3p1" path="res://src/scenes/enemies/scaliop.tscn" id="2_rr2wm"]
+[ext_resource type="PackedScene" uid="uid://5irodaj1nago" path="res://src/scenes/NPC/scaliop_NPC.tscn" id="2_rr2wm"]
+[ext_resource type="Script" uid="uid://54xfgx4aohaj" path="res://src/scripts/NPC/battle_interact.gd" id="3_32aa5"]
 
 [node name="Main" type="Node2D" unique_id=203482492]
 y_sort_enabled = true
 
 [node name="PlayerCharacter" parent="." unique_id=1356791457 instance=ExtResource("1_kkvs4")]
-position = Vector2(-1, 0)
 
 [node name="PlayerCamera" type="Camera2D" parent="PlayerCharacter" unique_id=1428302039]
 position_smoothing_enabled = true
 
-[node name="SeaHorseRider" parent="." unique_id=777290446 instance=ExtResource("2_rr2wm")]
-position = Vector2(221, 65)
+[node name="Scaliop" parent="." unique_id=615336102 groups=["Interactible"] instance=ExtResource("2_rr2wm")]
+position = Vector2(286, 19)
+script = ExtResource("3_32aa5")

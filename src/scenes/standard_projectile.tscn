@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dpd41uocnsydu"]
+
+[ext_resource type="Script" uid="uid://ptfab581viyi" path="res://src/scripts/attacks/standard_projectile.gd" id="1_gxnk0"]
+[ext_resource type="Texture2D" uid="uid://cqoipr0yb5kuq" path="res://src/sprites/basic_projectile.png" id="2_pjbbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjbbu"]
+size = Vector2(6, 4)
+
+[node name="StandardProjectile" type="StaticBody2D" unique_id=2137147491]
+z_index = 2
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_gxnk0")
+damage_amount = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=297908357]
+shape = SubResource("RectangleShape2D_pjbbu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2062715304]
+z_index = 6
+position = Vector2(0, -4.0233135e-07)
+texture = ExtResource("2_pjbbu")

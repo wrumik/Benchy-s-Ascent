@@ -1,13 +1,13 @@
 [
 	{
-		"position_x": 4,
-		"position_y": 1,
+		"position_x": 7,
+		"position_y": 2,
 		"enemy_name": "scaliop"
 	},
 	{
-		"position_x": 5,
-		"position_y": 1,
+		"position_x": 8,
+		"position_y": 2,
 		"enemy_name": "scaliop",
-		"chance_to_spawn": 100
+		"chance_to_spawn": 50
 	}
 ]

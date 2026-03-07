@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6q673tifyjjv"
-path="res://.godot/imported/benchy.png-92eeec5d392f86a3ce9d455ab3e8172b.ctex"
+uid="uid://cqoipr0yb5kuq"
+path="res://.godot/imported/basic_projectile.png-dedfbd7632a0f598d475b0ddc6b891ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/benchy.png"
-dest_files=["res://.godot/imported/benchy.png-92eeec5d392f86a3ce9d455ab3e8172b.ctex"]
+source_file="res://src/sprites/basic_projectile.png"
+dest_files=["res://.godot/imported/basic_projectile.png-dedfbd7632a0f598d475b0ddc6b891ab.ctex"]
 
 [params]
 

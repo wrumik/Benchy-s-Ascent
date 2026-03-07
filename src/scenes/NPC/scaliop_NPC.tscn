@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://5irodaj1nago"]
+
+[ext_resource type="Texture2D" uid="uid://h1ehn12ocdwt" path="res://src/sprites/enemies/seahorse_rider.png" id="1_0k2sa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peemw"]
+size = Vector2(14, 3)
+
+[node name="Scaliop" type="StaticBody2D" unique_id=615336102]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=144706199]
+texture = ExtResource("1_0k2sa")
+offset = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1385235754]
+position = Vector2(-2, -1.5)
+shape = SubResource("RectangleShape2D_peemw")

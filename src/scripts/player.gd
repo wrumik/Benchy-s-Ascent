@@ -27,7 +27,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	
-	move_and_slide()
+	if !GameData.is_in_battle:
+		move_and_slide()
 
 
 func update_animations():

@@ -11,7 +11,7 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and current_body:
+	if Input.is_action_just_pressed("interact") and current_body and !GameData.is_in_battle:
 		if current_body.has_method("interact"):
 			current_body.interact()
 		else:

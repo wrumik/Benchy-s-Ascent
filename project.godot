@@ -21,6 +21,7 @@ DialogueManager="*uid://c3rodes2l3gxb"
 Events="*uid://ch3jah3eaoytk"
 GameData="*uid://23nulffykie0"
 PlayerUI="*uid://cl2qej8ev4u8q"
+SceneManager="*uid://ca3xygbb7pk71"
 
 [dialogue_manager]
 
@@ -48,6 +49,8 @@ folder_colors={
 "res://src/resources/": "teal",
 "res://src/scenes/": "red",
 "res://src/scripts/": "red",
+"res://src/scripts/NPC/": "yellow",
+"res://src/scripts/attacks/": "teal",
 "res://src/scripts/enemies/": "yellow",
 "res://src/scripts/enemies/special/": "orange",
 "res://src/scripts/resource_scripts/": "orange",

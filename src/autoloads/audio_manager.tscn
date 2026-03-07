@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://ba7o60ir66r66"]
 
 [ext_resource type="Script" uid="uid://m148ejpnljnd" path="res://src/autoloads/audio_manager.gd" id="1_a8xdd"]
-[ext_resource type="AudioStream" uid="uid://d3p5ayjp3513g" path="res://src/sounds/jump.wav" id="2_sycyr"]
+[ext_resource type="AudioStream" uid="uid://3sxiyf3xbgvs" path="res://src/sounds/hurt.wav" id="2_sycyr"]
 
 [node name="AudioManager" type="Node2D" unique_id=987632632]
 script = ExtResource("1_a8xdd")
 
-[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=2009746137]
+[node name="SoundEffects" type="Node2D" parent="." unique_id=620804016]
+
+[node name="damage" type="AudioStreamPlayer" parent="SoundEffects" unique_id=731273559]
 stream = ExtResource("2_sycyr")
+
+[node name="Music" type="Node" parent="." unique_id=1674787822]

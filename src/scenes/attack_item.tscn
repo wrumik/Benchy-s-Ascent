@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d26wfku4vi6ng"]
+
+[ext_resource type="Script" uid="uid://dfbjbtvnubcu0" path="res://src/scripts/attack_item.gd" id="1_fhykc"]
+
+[node name="AttackItem" type="Button" unique_id=292270775]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true
+script = ExtResource("1_fhykc")

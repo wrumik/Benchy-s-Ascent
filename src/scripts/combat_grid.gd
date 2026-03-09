@@ -1,12 +1,13 @@
 class_name CombatScene
 extends Node2D
 
-@onready var enemies: Node2D = $Enemies
-@onready var player: Area2D = $Player
-@onready var player_sprite: AnimatedSprite2D = $Player/PlayerSprite
+@onready var pause_elements: Node = $PauseElements
+@onready var enemies: Node2D = $PauseElements/Enemies
+@onready var player: Area2D = $PauseElements/Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var health_bar: ProgressBar = $PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/HealthBar
-@onready var health_label: Label = $PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/HealthLabel
+@onready var health_bar: ProgressBar = $PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/HealthBar
+@onready var health_label: Label = $PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/HealthLabel
+@onready var attack_choice_menu: CenterContainer = $AttackChoiceMenu
 
 @export_group("grid")
 @export var grid_height: int = 5
@@ -25,6 +26,7 @@ func _ready() -> void:
 	player.update_health.connect(update_health_bar)
 	#set the spawning position of the player
 	player.target_position = map_to_local(Vector2(2, 2))
+	attack_choice_menu.resume_battle.connect(attack_choice_menu_hide)
 
 
 func ready_battle(battle_file_path: String):
@@ -49,9 +51,10 @@ func ready_battle(battle_file_path: String):
 		enemy_instance.player = player
 		grid[local_to_map(spawn_position).x][local_to_map(spawn_position).y] = enemy_instance
 		loop_counter += 1
+	pause_battle()
 	animation_player.play("start_of_battle")
 	await animation_player.animation_finished
-
+	animation_player.play("show_attack_choice_menu")
 
 
 func generate_grid():
@@ -130,15 +133,25 @@ func local_to_map(global_pos: Vector2):
 
 
 func pause_battle():
-	for i in get_children():
+	for i in pause_elements.get_children():
 		i.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func unpause_battle():
-	for i in get_children():
+	for i in pause_elements.get_children():
 		i.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func update_health_bar():
 	health_bar.value = GameData.player_health
 	health_label.text = str(int(health_bar.value)) + "/" + str(GameData.player_max_health)
+
+
+func attack_choice_menu_show():
+	animation_player.play("show_attack_choice_menu")
+	pause_battle()
+
+
+func attack_choice_menu_hide():
+	animation_player.play_backwards("show_attack_choice_menu")
+	unpause_battle()

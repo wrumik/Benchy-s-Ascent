@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7w775dkek1ug"
-path="res://.godot/imported/resume_button_normal.png-da000bfe7b2d7ec4367a985bfdc84541.ctex"
+uid="uid://fpbdypfkgq86"
+path="res://.godot/imported/attack_choice_board.png-e10b226cb1b23f0e767f16fa2fe9ec19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/menus/resume_button_normal.png"
-dest_files=["res://.godot/imported/resume_button_normal.png-da000bfe7b2d7ec4367a985bfdc84541.ctex"]
+source_file="res://src/sprites/menus/attack_choice_menu/attack_choice_board.png"
+dest_files=["res://.godot/imported/attack_choice_board.png-e10b226cb1b23f0e767f16fa2fe9ec19.ctex"]
 
 [params]
 

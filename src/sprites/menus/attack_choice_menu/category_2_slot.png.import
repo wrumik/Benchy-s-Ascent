@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwp4f1q7rk77j"
-path="res://.godot/imported/system_button_normal.png-a46a1aecd2fee1c12608e5ac81ad2ef9.ctex"
+uid="uid://gkkemlisx2bq"
+path="res://.godot/imported/category_2_slot.png-09fda004a2564ef32c7d526e0ebc87b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/menus/system_button_normal.png"
-dest_files=["res://.godot/imported/system_button_normal.png-a46a1aecd2fee1c12608e5ac81ad2ef9.ctex"]
+source_file="res://src/sprites/menus/attack_choice_menu/category_2_slot.png"
+dest_files=["res://.godot/imported/category_2_slot.png-09fda004a2564ef32c7d526e0ebc87b6.ctex"]
 
 [params]
 

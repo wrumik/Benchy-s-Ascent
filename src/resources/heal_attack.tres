@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerAttackItemResource" format=3 uid="uid://b4an03f7wer7m"]
+
+[ext_resource type="Script" uid="uid://d2lfmnhola1o1" path="res://src/scripts/resource_scripts/player_attack_resource.gd" id="1_745kp"]
+[ext_resource type="Texture2D" uid="uid://7yloxwlr3tu3" path="res://src/sprites/menus/attack_choice_menu/icons/heal_icon.png" id="1_n81s1"]
+
+[resource]
+script = ExtResource("1_745kp")
+icon_texture = ExtResource("1_n81s1")
+category = 2
+metadata/_custom_type_script = "uid://d2lfmnhola1o1"

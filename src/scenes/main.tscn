@@ -13,5 +13,5 @@ y_sort_enabled = true
 position_smoothing_enabled = true
 
 [node name="Scaliop" parent="." unique_id=615336102 groups=["Interactible"] instance=ExtResource("2_rr2wm")]
-position = Vector2(286, 19)
+position = Vector2(63, 1)
 script = ExtResource("3_32aa5")

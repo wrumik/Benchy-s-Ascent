@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerAttackItemResource" format=3 uid="uid://dcwbned53xtjn"]
+
+[ext_resource type="Script" uid="uid://d2lfmnhola1o1" path="res://src/scripts/resource_scripts/player_attack_resource.gd" id="1_4dgsp"]
+[ext_resource type="Texture2D" uid="uid://dxjinngribrg8" path="res://src/sprites/menus/attack_choice_menu/icons/block_icon.png" id="1_5sphc"]
+
+[resource]
+script = ExtResource("1_4dgsp")
+icon_texture = ExtResource("1_5sphc")
+category = 3
+metadata/_custom_type_script = "uid://d2lfmnhola1o1"

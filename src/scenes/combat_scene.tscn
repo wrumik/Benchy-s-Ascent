@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://ct3t37fg3viuc" path="res://src/sprites/benchy_combat_sheet.png" id="3_0lu7h"]
 [ext_resource type="AudioStream" uid="uid://bwohmrspgrd4" path="res://src/sounds/land_sound.wav" id="4_n3vmm"]
 [ext_resource type="Texture2D" uid="uid://d1ix5v5tdfrf5" path="res://src/sprites/benchy_icon.png" id="6_vl4v0"]
+[ext_resource type="Texture2D" uid="uid://fpbdypfkgq86" path="res://src/sprites/menus/attack_choice_menu/attack_choice_board.png" id="7_64jxs"]
+[ext_resource type="Texture2D" uid="uid://m8njoa2y22u8" path="res://src/sprites/menus/attack_choice_menu/category_1_slot.png" id="7_f40g2"]
+[ext_resource type="Script" uid="uid://cxjy465cp3vew" path="res://src/scripts/attack_choice_menu.gd" id="7_wv1x1"]
+[ext_resource type="Texture2D" uid="uid://gkkemlisx2bq" path="res://src/sprites/menus/attack_choice_menu/category_2_slot.png" id="8_bej3w"]
+[ext_resource type="Texture2D" uid="uid://deionybv1kk7o" path="res://src/sprites/menus/attack_choice_menu/category_3_slot.png" id="9_i5k2e"]
+[ext_resource type="Texture2D" uid="uid://cpb44b2ulha51" path="res://src/sprites/menus/attack_choice_menu/confirm_button_normal.png" id="10_lw1kn"]
+[ext_resource type="Texture2D" uid="uid://ddykk3s2vngvt" path="res://src/sprites/menus/attack_choice_menu/confirm_button_focused.png" id="11_rr7wl"]
+[ext_resource type="Texture2D" uid="uid://dlda4wobomo3t" path="res://src/sprites/menus/attack_choice_menu/arrow_left_focused.png" id="12_gsnas"]
+[ext_resource type="Texture2D" uid="uid://dy8pjcuhl15n2" path="res://src/sprites/menus/attack_choice_menu/arrow_left_normal.png" id="12_wv1x1"]
+[ext_resource type="Texture2D" uid="uid://crwi2q1j7nxky" path="res://src/sprites/menus/attack_choice_menu/arrow_right_normal.png" id="13_81gie"]
+[ext_resource type="Texture2D" uid="uid://c00c7y51r3l6f" path="res://src/sprites/menus/attack_choice_menu/arrow_right_focused.png" id="14_gdmoy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbgvi"]
 atlas = ExtResource("3_0lu7h")
@@ -178,6 +189,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxuoa"]
 size = Vector2(19, 35)
 
+[sub_resource type="Curve" id="Curve_n3vmm"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 30), 0.0, 0.0, 0, 0, Vector2(0.49999997, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl4v0"]
+bg_color = Color(0.3779187, 0.3779189, 0.37791884, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64jxs"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="Animation" id="Animation_vxuoa"]
 length = 0.001
 tracks/0/type = "value"
@@ -207,7 +229,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/PlayerSprite:position")
+tracks/2/path = NodePath("PauseElements/Player/PlayerSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -219,7 +241,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Enemies:position")
+tracks/3/path = NodePath("PauseElements/Enemies:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -231,7 +253,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Player/PlayerSprite:animation")
+tracks/4/path = NodePath("PauseElements/Player/PlayerSprite:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -243,7 +265,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CombatBackground:position")
+tracks/5/path = NodePath("PauseElements/CombatBackground:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -251,6 +273,48 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AttackChoiceMenu:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_wv1x1"]
+resource_name = "show_attack_choice_menu"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackChoiceMenu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackChoiceMenu")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_first_slot"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_o6xtj"]
@@ -283,7 +347,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/PlayerSprite:position")
+tracks/2/path = NodePath("PauseElements/Player/PlayerSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -295,7 +359,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Enemies:position")
+tracks/3/path = NodePath("PauseElements/Enemies:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -307,7 +371,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Player/PlayerSprite:animation")
+tracks/4/path = NodePath("PauseElements/Player/PlayerSprite:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -319,7 +383,7 @@ tracks/4/keys = {
 tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationSounds")
+tracks/5/path = NodePath("PauseElements/AnimationSounds")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -334,7 +398,7 @@ tracks/5/use_blend = true
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CombatBackground:position")
+tracks/6/path = NodePath("PauseElements/CombatBackground:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -347,38 +411,35 @@ tracks/6/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxuoa"]
 _data = {
 &"RESET": SubResource("Animation_vxuoa"),
+&"show_attack_choice_menu": SubResource("Animation_wv1x1"),
 &"start_of_battle": SubResource("Animation_o6xtj")
 }
-
-[sub_resource type="Curve" id="Curve_n3vmm"]
-_limits = [0.0, 30.0, 0.0, 1.0]
-_data = [Vector2(0, 30), 0.0, 0.0, 0, 0, Vector2(0.49999997, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl4v0"]
-bg_color = Color(0.3779187, 0.3779189, 0.37791884, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64jxs"]
-bg_color = Color(1, 1, 1, 1)
 
 [node name="CombatScene" type="Node2D" unique_id=222979862]
 process_mode = 1
 y_sort_enabled = true
 script = ExtResource("2_n3vmm")
 
-[node name="Enemies" type="Node2D" parent="." unique_id=1569701929]
+[node name="PauseElements" type="Node2D" parent="." unique_id=4933573]
+
+[node name="CombatBackground" type="Sprite2D" parent="PauseElements" unique_id=671025383]
+scale = Vector2(2, 2)
+texture = ExtResource("1_yvae2")
+centered = false
+
+[node name="Enemies" type="Node2D" parent="PauseElements" unique_id=1569701929]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(472, 352)
 
-[node name="Player" type="Area2D" parent="." unique_id=246299981 node_paths=PackedStringArray("grid")]
-position = Vector2(172, 352)
+[node name="Player" type="Area2D" parent="PauseElements" unique_id=246299981 node_paths=PackedStringArray("grid")]
+position = Vector2(172, 324)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_0lu7h")
-grid = NodePath("..")
+grid = NodePath("../..")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player" unique_id=160646694]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="PauseElements/Player" unique_id=160646694]
 z_index = 1
 position = Vector2(166, 352)
 sprite_frames = SubResource("SpriteFrames_d44ib")
@@ -386,22 +447,14 @@ animation = &"fall"
 autoplay = "fall"
 offset = Vector2(0, -21)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=559476207]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseElements/Player" unique_id=559476207]
 position = Vector2(-0.5, -18.5)
 shape = SubResource("RectangleShape2D_vxuoa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344881720]
-libraries/ = SubResource("AnimationLibrary_vxuoa")
-
-[node name="CombatBackground" type="Sprite2D" parent="." unique_id=671025383]
-scale = Vector2(2, 2)
-texture = ExtResource("1_yvae2")
-centered = false
-
-[node name="AnimationSounds" type="AudioStreamPlayer" parent="." unique_id=1968866538]
+[node name="AnimationSounds" type="AudioStreamPlayer" parent="PauseElements" unique_id=1968866538]
 bus = &"SFX"
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1921126568]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PauseElements" unique_id=1921126568]
 z_index = 2
 position = Vector2(644, 239)
 amount = 10
@@ -418,7 +471,7 @@ split_scale = true
 scale_curve_x = SubResource("Curve_n3vmm")
 scale_curve_y = null
 
-[node name="PlayerHealthBar" type="Control" parent="." unique_id=1697961482]
+[node name="PlayerHealthBar" type="Control" parent="PauseElements" unique_id=1697961482]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -427,17 +480,122 @@ offset_top = 447.0
 offset_right = 201.0
 offset_bottom = 480.0
 grow_vertical = 0
+mouse_filter = 2
 
-[node name="TextureRect" type="ColorRect" parent="PlayerHealthBar" unique_id=1737820861]
+[node name="TextureRect" type="ColorRect" parent="PauseElements/PlayerHealthBar" unique_id=1737820861]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 3.1840003
+anchor_bottom = 1.0
+offset_right = 0.015930176
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseElements/PlayerHealthBar/TextureRect" unique_id=1674540125]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="PlayerHealthBar/TextureRect" unique_id=1674540125]
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseElements/PlayerHealthBar/TextureRect/MarginContainer" unique_id=6124810]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer" unique_id=281540050]
+custom_minimum_size = Vector2(22, 21)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_vl4v0")
+stretch_mode = 3
+
+[node name="HealthBar" type="ProgressBar" parent="PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer" unique_id=172098797]
+custom_minimum_size = Vector2(96, 6)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vl4v0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_64jxs")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer" unique_id=1674219450]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="AttackChoiceMenu" type="CenterContainer" parent="." unique_id=1178220743]
+z_index = 2
+offset_right = 640.0
+offset_bottom = 480.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(320, 240)
+script = ExtResource("7_wv1x1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AttackChoiceMenu" unique_id=993224847]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AttackChoiceMenu/HBoxContainer" unique_id=59398663]
+layout_mode = 2
+
+[node name="Slot1Container" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer" unique_id=1002331011]
+layout_mode = 2
+texture = ExtResource("7_f40g2")
+
+[node name="Slot1Icon" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer/Slot1Container" unique_id=960216529]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 33.0
+
+[node name="Slot2Container" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer" unique_id=1870218056]
+layout_mode = 2
+texture = ExtResource("8_bej3w")
+
+[node name="Slot2Icon" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer/Slot2Container" unique_id=580173807]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 33.0
+
+[node name="Slot3Container" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer" unique_id=955890506]
+layout_mode = 2
+texture = ExtResource("9_i5k2e")
+
+[node name="Slot3Icon" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer/Slot3Container" unique_id=1491244098]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 33.0
+
+[node name="ConfirmButton" type="TextureButton" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer" unique_id=118765461]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("10_lw1kn")
+texture_focused = ExtResource("11_rr7wl")
+
+[node name="AttackDescriptionLabel" type="Label" parent="AttackChoiceMenu/HBoxContainer/VBoxContainer" unique_id=758432631]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="AttackChoiceMenu/HBoxContainer" unique_id=1087756174]
+layout_mode = 2
+texture = ExtResource("7_64jxs")
+
+[node name="MarginContainer" type="MarginContainer" parent="AttackChoiceMenu/HBoxContainer/TextureRect" unique_id=612372143]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -445,34 +603,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHealthBar/TextureRect/MarginContainer" unique_id=6124810]
+[node name="VBoxContainer" type="VBoxContainer" parent="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer" unique_id=984973457]
 layout_mode = 2
-size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer" unique_id=281540050]
-custom_minimum_size = Vector2(22, 21)
-layout_mode = 2
-texture = ExtResource("6_vl4v0")
-stretch_mode = 3
-
-[node name="HealthBar" type="ProgressBar" parent="PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer" unique_id=172098797]
-custom_minimum_size = Vector2(96, 6)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_vl4v0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_64jxs")
-step = 1.0
-value = 100.0
-show_percentage = false
-
-[node name="HealthLabel" type="Label" parent="PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer" unique_id=1674219450]
+[node name="GridContainer" type="GridContainer" parent="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=532762151]
+custom_minimum_size = Vector2(284, 180)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "100/100"
-horizontal_alignment = 1
+size_flags_vertical = 0
+theme_override_constants/v_separation = 5
+columns = 8
 
-[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1427836240]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ArrowButtonLeft" type="TextureButton" parent="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=196516165]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("12_wv1x1")
+texture_focused = ExtResource("12_gsnas")
+
+[node name="PageLabel" type="Label" parent="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=950742932]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "page 1 of 1"
+
+[node name="ArrowButtonRight" type="TextureButton" parent="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1643360347]
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("13_81gie")
+texture_focused = ExtResource("14_gdmoy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344881720]
+libraries/ = SubResource("AnimationLibrary_vxuoa")
+
+[connection signal="body_entered" from="PauseElements/Player" to="PauseElements/Player" method="_on_body_entered"]
+[connection signal="pressed" from="AttackChoiceMenu/HBoxContainer/VBoxContainer/ConfirmButton" to="AttackChoiceMenu" method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/ArrowButtonLeft" to="AttackChoiceMenu" method="_on_arrow_button_left_pressed"]
+[connection signal="pressed" from="AttackChoiceMenu/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/ArrowButtonRight" to="AttackChoiceMenu" method="_on_arrow_button_right_pressed"]

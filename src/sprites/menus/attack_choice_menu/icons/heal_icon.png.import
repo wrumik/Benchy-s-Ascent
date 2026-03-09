@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dholc5vyyxpd7"
-path="res://.godot/imported/inventory_button_selected.png-e017dcdecf0e864ba67c02870fd4c96d.ctex"
+uid="uid://7yloxwlr3tu3"
+path="res://.godot/imported/heal_icon.png-3c9fdd13c4a034bc1025f8b39d0723f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/menus/inventory_button_selected.png"
-dest_files=["res://.godot/imported/inventory_button_selected.png-e017dcdecf0e864ba67c02870fd4c96d.ctex"]
+source_file="res://src/sprites/menus/attack_choice_menu/icons/heal_icon.png"
+dest_files=["res://.godot/imported/heal_icon.png-3c9fdd13c4a034bc1025f8b39d0723f3.ctex"]
 
 [params]
 

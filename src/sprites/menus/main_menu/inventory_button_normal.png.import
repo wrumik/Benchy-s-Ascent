@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du05hu8mn01lo"
-path="res://.godot/imported/resume_button_selected.png-f1af4738719ccbbe42811b9a36dcf30e.ctex"
+uid="uid://cso6k7m8tr326"
+path="res://.godot/imported/inventory_button_normal.png-1fc1718ca83a7e189610a223fdb2e6d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/menus/resume_button_selected.png"
-dest_files=["res://.godot/imported/resume_button_selected.png-f1af4738719ccbbe42811b9a36dcf30e.ctex"]
+source_file="res://src/sprites/menus/main_menu/inventory_button_normal.png"
+dest_files=["res://.godot/imported/inventory_button_normal.png-1fc1718ca83a7e189610a223fdb2e6d8.ctex"]
 
 [params]
 

@@ -6,13 +6,11 @@ extends CenterContainer
 @onready var slot_2_icon: TextureRect = $HBoxContainer/VBoxContainer/Slot2Container/Slot2Icon
 @onready var slot_3_icon: TextureRect = $HBoxContainer/VBoxContainer/Slot3Container/Slot3Icon
 
+@export var player: Area2D
+
 var slots_per_page: int = 40
 var current_page: int = 1
 var page_count: int = 1
-
-var slot_1_attack: PlayerAttackItemResource
-var slot_2_attack: PlayerAttackItemResource
-var slot_3_attack: PlayerAttackItemResource
 
 signal resume_battle
 
@@ -59,16 +57,16 @@ func focus_first_slot():
 func set_equipped(attack_item_resource: PlayerAttackItemResource):
 	match attack_item_resource.category:
 		1:
-			slot_1_attack = attack_item_resource
-			slot_1_icon.texture = slot_1_attack.icon_texture
+			player.slot_1_attack = attack_item_resource
+			slot_1_icon.texture = player.slot_1_attack.icon_texture
 		2:
-			slot_2_attack = attack_item_resource
-			slot_2_icon.texture = slot_2_attack.icon_texture
+			player.slot_2_attack = attack_item_resource
+			slot_2_icon.texture = player.slot_2_attack.icon_texture
 		3:
-			slot_3_attack = attack_item_resource
-			slot_3_icon.texture = slot_3_attack.icon_texture
+			player.slot_3_attack = attack_item_resource
+			slot_3_icon.texture = player.slot_3_attack.icon_texture
 
 
 func _on_confirm_button_pressed() -> void:
-	if slot_1_attack != null and slot_2_attack != null and slot_3_attack != null:
+	if player.slot_1_attack != null and player.slot_2_attack != null and player.slot_3_attack != null:
 		resume_battle.emit()

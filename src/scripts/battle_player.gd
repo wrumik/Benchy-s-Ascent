@@ -6,9 +6,17 @@ extends Area2D
 
 signal update_health
 
+var is_attacking: bool = false
 var is_dead: bool = false
 var target_position: Vector2
 var player_move_speed: float = 25.0
+
+var slot_1_attack: PlayerAttackItemResource
+var slot_2_attack: PlayerAttackItemResource
+var slot_3_attack: PlayerAttackItemResource
+var attack_1_cooldown: float = 0.0
+var attack_2_cooldown: float = 0.0
+var attack_3_cooldown: float = 0.0
 
 func _ready() -> void:
 	if grid == null:
@@ -39,14 +47,33 @@ func take_damage(amount):
 
 func _input(_event: InputEvent) -> void:
 	if !is_dead:
-		if Input.is_action_just_pressed("left"):
-			grid.move_player_to_tile(Vector2(-1, 0))
-		if Input.is_action_just_pressed("right"):
-			grid.move_player_to_tile(Vector2(1, 0))
-		if Input.is_action_just_pressed("up"):
-			grid.move_player_to_tile(Vector2(0, -1))
-		if Input.is_action_just_pressed("down"):
-			grid.move_player_to_tile(Vector2(0, 1))
+		if !is_attacking:
+			if Input.is_action_just_pressed("left"):
+				grid.move_player_to_tile(Vector2(-1, 0))
+			if Input.is_action_just_pressed("right"):
+				grid.move_player_to_tile(Vector2(1, 0))
+			if Input.is_action_just_pressed("up"):
+				grid.move_player_to_tile(Vector2(0, -1))
+			if Input.is_action_just_pressed("down"):
+				grid.move_player_to_tile(Vector2(0, 1))
+		if Input.is_action_just_pressed("attack_1"):
+			use_attack(slot_1_attack)
+		if Input.is_action_just_pressed("attack_2"):
+			use_attack(slot_2_attack)
+		if Input.is_action_just_pressed("attack_3"):
+			use_attack(slot_3_attack)
+		if Input.is_action_just_pressed("attack_ultimate"):
+			pass
+
+
+func use_attack(attack_resource: PlayerAttackItemResource):
+	is_attacking = true
+	var attack_instance: Node2D = attack_resource.attack_scene.instantiate()
+	add_sibling(attack_instance)
+	attack_instance.global_position = global_position
+	await get_tree().create_timer(attack_resource.attack_duration).timeout
+	is_attacking = false
+
 
 
 func _process(delta: float) -> void:

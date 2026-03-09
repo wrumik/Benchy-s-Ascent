@@ -8,6 +8,7 @@ extends Node2D
 @onready var health_bar: ProgressBar = $PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/HealthBar
 @onready var health_label: Label = $PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/HealthLabel
 @onready var attack_choice_menu: CenterContainer = $AttackChoiceMenu
+@onready var turn_progress_bar: ProgressBar = $PauseElements/PlayerHealthBar/TextureRect/MarginContainer/HBoxContainer/TurnProgressBar
 
 @export_group("grid")
 @export var grid_height: int = 5
@@ -19,6 +20,9 @@ extends Node2D
 @export var enemy_tile_start: int = 5
 
 var grid: Array[Array]
+var is_choosing_attacks: bool = false
+var time_until_next_turn: float = 20.0
+var default_turn_time: float = 20.0
 
 
 func _ready() -> void:
@@ -52,9 +56,10 @@ func ready_battle(battle_file_path: String):
 		grid[local_to_map(spawn_position).x][local_to_map(spawn_position).y] = enemy_instance
 		loop_counter += 1
 	pause_battle()
+	is_choosing_attacks = true
 	animation_player.play("start_of_battle")
 	await animation_player.animation_finished
-	animation_player.play("show_attack_choice_menu")
+	attack_choice_menu_show()
 
 
 func generate_grid():
@@ -150,8 +155,20 @@ func update_health_bar():
 func attack_choice_menu_show():
 	animation_player.play("show_attack_choice_menu")
 	pause_battle()
+	is_choosing_attacks = true
 
 
 func attack_choice_menu_hide():
 	animation_player.play_backwards("show_attack_choice_menu")
 	unpause_battle()
+	time_until_next_turn = default_turn_time
+	is_choosing_attacks = false
+
+
+func _process(delta: float) -> void:
+	if time_until_next_turn <= 0 and !is_choosing_attacks:
+		attack_choice_menu_show()
+	else:
+		time_until_next_turn -= delta
+		if !is_choosing_attacks:
+			turn_progress_bar.value = time_until_next_turn

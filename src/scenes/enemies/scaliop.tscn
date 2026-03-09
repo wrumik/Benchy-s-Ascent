@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bep8eau20bnm1" path="res://src/scripts/enemies/scaliop.gd" id="1_d3x4f"]
 [ext_resource type="Texture2D" uid="uid://b303mhicix6or" path="res://src/sprites/enemies/scaliop_battle_sheet.png" id="2_d3x4f"]
-[ext_resource type="PackedScene" uid="uid://dpd41uocnsydu" path="res://src/scenes/standard_projectile.tscn" id="2_giegn"]
+[ext_resource type="PackedScene" uid="uid://dpd41uocnsydu" path="res://src/scenes/enemy_attacks/standard_projectile.tscn" id="2_giegn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t3wo"]
 size = Vector2(23, 14.25)
@@ -104,12 +104,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Scaliop" type="Area2D" unique_id=167073379]
+[node name="Scaliop" type="StaticBody2D" unique_id=1646388551]
 y_sort_enabled = true
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_d3x4f")
 attack_projectile_scene = ExtResource("2_giegn")
+health = 50
 move_speed = 5.0
 decision_time = 0.6
 

@@ -3,7 +3,8 @@ extends BattleEnemy
 @onready var scaliop_sprite: AnimatedSprite2D = $ScaliopSprite
 @onready var attack_pivot: Node2D = $AttackPivot
 
-var attack_cooldown: int = 3
+var attack_cooldown: int = 5
+var attack_cooldown_variation: int = 2
 var current_attack_cooldown: int = 3
 var attack_ready: bool = false
 
@@ -25,18 +26,14 @@ func _on_decision_timer_timeout():
 	if current_attack_cooldown > 0:
 		move_to_random_tile()
 	else:
-		if player.global_position.y < global_position.y and attack_ready:
-			if grid.move_to_tile(target_position, possible_movement_directions["up"]):
-				scaliop_sprite.play("jump")
-				await scaliop_sprite.animation_finished
-				attack()
-		if player.global_position.y > global_position.y and attack_ready:
-			if grid.move_to_tile(target_position, possible_movement_directions["down"]):
-				scaliop_sprite.play("jump")
-				await scaliop_sprite.animation_finished
-				attack()
-		else:
-			move_to_random_tile()
+		if player.target_position.y == target_position.y:
+			attack()
+		if player.target_position.y > target_position.y:
+			scaliop_sprite.play("jump")
+			grid.move_to_tile(target_position, possible_movement_directions["down"])
+		if player.target_position.y < target_position.y:
+			scaliop_sprite.play("jump")
+			grid.move_to_tile(target_position, possible_movement_directions["up"])
 
 
 func move_to_random_tile():
@@ -47,7 +44,7 @@ func move_to_random_tile():
 
 
 func attack():
-	current_attack_cooldown = 3
+	current_attack_cooldown = randi_range(attack_cooldown - attack_cooldown_variation, attack_cooldown + attack_cooldown_variation)
 	scaliop_sprite.play("attack")
 	var projectile_instance: Hazard = attack_projectile_scene.instantiate()
 	add_sibling(projectile_instance)

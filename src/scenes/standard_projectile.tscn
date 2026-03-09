@@ -11,7 +11,7 @@ z_index = 2
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_gxnk0")
-damage_amount = 50
+damage_amount = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=297908357]
 shape = SubResource("RectangleShape2D_pjbbu")

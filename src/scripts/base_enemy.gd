@@ -2,6 +2,8 @@ class_name BattleEnemy
 extends Area2D
 
 @export_group("enemy")
+@export var health: int = 100
+@export var defense: int = 0
 @export var move_speed: float = 25.0
 @export var decision_time: float = 1
 

@@ -18,15 +18,13 @@ extends Node2D
 @export var enemy_tile_start: int = 5
 
 var grid: Array[Array]
-var target_position: Vector2
-var player_move_speed: float = 25.0
 
 
 func _ready() -> void:
 	generate_grid()
 	player.update_health.connect(update_health_bar)
 	#set the spawning position of the player
-	target_position = map_to_local(Vector2(2, 2))
+	player.target_position = map_to_local(Vector2(2, 2))
 
 
 func ready_battle(battle_file_path: String):
@@ -51,8 +49,9 @@ func ready_battle(battle_file_path: String):
 		enemy_instance.player = player
 		grid[local_to_map(spawn_position).x][local_to_map(spawn_position).y] = enemy_instance
 		loop_counter += 1
-	
 	animation_player.play("start_of_battle")
+	await animation_player.animation_finished
+
 
 
 func generate_grid():
@@ -102,7 +101,7 @@ func move_to_tile(current_pos: Vector2, direction: Vector2) -> bool:
 
 func move_player_to_tile(direction: Vector2) -> void:
 	#out of bounds tile check
-	var desired_next_pos: Vector2 = (local_to_map(target_position) + direction)
+	var desired_next_pos: Vector2 = (local_to_map(player.target_position) + direction)
 	if (desired_next_pos.x < 0
 	|| (desired_next_pos.y) < 0):
 		print("tile out of bounds")
@@ -114,10 +113,10 @@ func move_player_to_tile(direction: Vector2) -> void:
 		print("tile occupied")
 		return
 	
-	grid[local_to_map(target_position).x][local_to_map(target_position).y] = null
+	grid[local_to_map(player.target_position).x][local_to_map(player.target_position).y] = null
 	grid[desired_next_pos.x][desired_next_pos.y] = player
 	
-	target_position = map_to_local(desired_next_pos)
+	player.target_position = map_to_local(desired_next_pos)
 
 
 func map_to_local(cell_position: Vector2):
@@ -130,20 +129,14 @@ func local_to_map(global_pos: Vector2):
 	(global_pos.y - cell_offset.y) / (cell_size.y + cell_separation.y))
 
 
-func _input(_event: InputEvent) -> void:
-	if !player.is_dead:
-		if Input.is_action_just_pressed("left"):
-			move_player_to_tile(Vector2(-1, 0))
-		if Input.is_action_just_pressed("right"):
-			move_player_to_tile(Vector2(1, 0))
-		if Input.is_action_just_pressed("up"):
-			move_player_to_tile(Vector2(0, -1))
-		if Input.is_action_just_pressed("down"):
-			move_player_to_tile(Vector2(0, 1))
+func pause_battle():
+	for i in get_children():
+		i.process_mode = Node.PROCESS_MODE_DISABLED
 
 
-func _process(delta: float) -> void:
-	player.global_position = lerp(player.global_position, target_position, player_move_speed * delta)
+func unpause_battle():
+	for i in get_children():
+		i.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func update_health_bar():
